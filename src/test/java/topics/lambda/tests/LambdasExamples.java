@@ -3,12 +3,10 @@ package topics.lambda.tests;
 import com.corejava.lab.corejavapractice.topics.lambds.utils.modals.Employee;
 import com.corejava.lab.corejavapractice.topics.lambds.utils.modals.Execute;
 import lombok.extern.slf4j.Slf4j;
+import org.testng.TestException;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @project core-java-practice
@@ -168,6 +166,29 @@ public class LambdasExamples {
 
         }
 
+        @Test
+    public void sortUpperCasewithLambda() {
+                List<String> teamIndia = Arrays.asList(
+                        "Virat",
+                        "Rohit",
+                        "Rahul",
+                        "mayank",
+                        "Prudvi",
+                        "gil",
+                        "pant",
+                        "shreyas",
+                        "Dhawan",
+                        "Jadeja",
+                        "Saini",
+                        "Shami",
+                        "bumhra"
+                );
 
+            List<String> firstUpperCaseList = new ArrayList<>();
+            teamIndia.forEach(name ->
+                    firstUpperCaseList.add(name.substring(0,1).toUpperCase() + name.substring(1)));
+            firstUpperCaseList.sort(Comparator.naturalOrder());
+            firstUpperCaseList.forEach(System.out::println);
+        }
 
 }

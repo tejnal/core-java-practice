@@ -8,9 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -142,6 +140,84 @@ public class StreamsExamples {
         departments.add(informationTech);
         departments.add(computerScience);
         return departments;
+    }
+
+    @Test
+    public void sortUpperCasewithStreams() {
+        List<String> teamIndia = Arrays.asList(
+                "Virat",
+                "Rohit",
+                "Rahul",
+                "mayank",
+                "Prudvi",
+                "gil",
+                "pant",
+                "shreyas",
+                "Dhawan",
+                "Jadeja",
+                "Saini",
+                "Shami",
+                "bumhra"
+        );
+
+        teamIndia.stream()
+        .map(name -> name.substring(0,1).toUpperCase() + name.substring(1))
+                .sorted(Comparator.naturalOrder())
+                .forEach(System.out::println);
+
+    }
+
+    @Test
+    public void userFilterWithStreams() {
+
+        List<String> teamIndia = Arrays.asList(
+                "Virat",
+                "Rohit",
+                "Rahul",
+                "mayank",
+                "Prudvi",
+                "gil",
+                "pant",
+                "shreyas",
+                "Dhawan",
+                "Jadeja",
+                "Saini",
+                "Shami",
+                "bumhra"
+        );
+
+       long namesBeginWithB =  teamIndia.stream()
+                .map(name -> name.substring(0,1) .toUpperCase() + name.substring(1))
+                .filter(name -> name.startsWith("B"))
+                .count();
+        System.out.println("Number of names beginning with B : " + namesBeginWithB );
+    }
+
+    @Test
+    public void userPeakWithStreams() {
+
+        List<String> teamIndia = Arrays.asList(
+                "Virat",
+                "Rohit",
+                "Rahul",
+                "mayank",
+                "Prudvi",
+                "gil",
+                "pant",
+                "shreyas",
+                "Dhawan",
+                "Jadeja",
+                "Saini",
+                "Shami",
+                "bumhra"
+        );
+
+        long namesBeginWithB =  teamIndia.stream()
+                .map(name -> name.substring(0,1) .toUpperCase() + name.substring(1))
+                //This will give you the Number
+                .peek(System.out::println)
+                .count();
+        System.out.println("Number of names beginning with B : " + namesBeginWithB );
     }
 
 }
